@@ -446,7 +446,7 @@ a{ color:inherit; }
    ============================================================ */
 .profile-grid{ display:flex; gap:90px; align-items:flex-start; flex-wrap:wrap; }
 .slide-frame{
-  position:relative; width:230px; height:230px; flex-shrink:0;
+  position:relative; width:340px; height:340px; flex-shrink:0;
   border-radius:50%; display:flex; align-items:center; justify-content:center;
 }
 .slide-ring{
