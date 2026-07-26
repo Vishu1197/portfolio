@@ -368,9 +368,10 @@
     const wrap = document.getElementById("orbitTagWrap");
    DOMAINS.forEach((d,i) => {
       const angle = (i/DOMAINS.length) * Math.PI*2 - Math.PI/2;
-      const R = i % 2 === 0 ? 150 : 185;   // was a flat 135 for every tag
-      const x = 115 + Math.cos(angle)*R;
-      const y = 115 + Math.sin(angle)*R;
+      const center = 170;   // half of the new 340px frame
+      const R = 150;         // stays inside the frame, so no spillover
+      const x = center + Math.cos(angle)*R;
+      const y = center + Math.sin(angle)*R;
       const tagEl = document.createElement("span");
       tagEl.className = "orbit-tag";
       tagEl.textContent = d.label;
