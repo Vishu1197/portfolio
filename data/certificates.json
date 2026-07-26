@@ -1,0 +1,46 @@
+{
+  "academia": {
+    "label": "Academic",
+    "note": "Degree, curricular & institutional records",
+    "items": [
+      { "file": "cert1", "title": "Academic Record 01" },
+      { "file": "cert2", "title": "Academic Record 02" },
+      { "file": "cert3", "title": "Academic Record 03" },
+      { "file": "cert4", "title": "Academic Record 04" }
+    ]
+  },
+  "cocurricular": {
+    "label": "Co-Curricular",
+    "note": "Conference, symposium & presentation records",
+    "items": [
+      { "file": "cert1", "title": "Co-Curricular Record 01" },
+      { "file": "cert2", "title": "Co-Curricular Record 02" },
+      { "file": "cert3", "title": "Co-Curricular Record 03" },
+      { "file": "cert4", "title": "Co-Curricular Record 04" },
+      { "file": "cert5", "title": "Co-Curricular Record 05" },
+      { "file": "cert6", "title": "Co-Curricular Record 06" },
+      { "file": "cert7", "title": "Co-Curricular Record 07" },
+      { "file": "cert8", "title": "Co-Curricular Record 08" },
+      { "file": "cert9", "title": "Co-Curricular Record 09" },
+      { "file": "cert10", "title": "Co-Curricular Record 10" },
+      { "file": "cert11", "title": "Co-Curricular Record 11" }
+    ]
+  },
+  "extracurricular": {
+    "label": "Extra-Curricular",
+    "note": "Sport, arts & personal development records",
+    "items": [
+      { "file": "cert1", "title": "Extra-Curricular Record 01" },
+      { "file": "cert2", "title": "Extra-Curricular Record 02" },
+      { "file": "cert3", "title": "Extra-Curricular Record 03" },
+      { "file": "cert4", "title": "Extra-Curricular Record 04" },
+      { "file": "cert5", "title": "Extra-Curricular Record 05" },
+      { "file": "cert6", "title": "Extra-Curricular Record 06" },
+      { "file": "cert7", "title": "Extra-Curricular Record 07" },
+      { "file": "cert8", "title": "Extra-Curricular Record 08" },
+      { "file": "cert9", "title": "Extra-Curricular Record 09" },
+      { "file": "cert10", "title": "Extra-Curricular Record 10" },
+      { "file": "cert11", "title": "Extra-Curricular Record 11" }
+    ]
+  }
+}

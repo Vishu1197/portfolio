@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vishal Chanda — Research Console</title>
+<meta name="description" content="Interactive research console for Vishal Chanda, PhD Researcher in Virology, Bioinformatics and Nanomedicine.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- BOOT SEQUENCE -->
+<div id="boot">
+  <div class="boot-lines" id="bootLines"></div>
+  <div class="boot-bar"><span id="bootBar"></span></div>
+</div>
+
+<!-- APP SHELL -->
+<div class="app" id="app">
+
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">◎</span> VISHAL CHANDA <span class="brand-sub">Research Console v2.0</span></div>
+    <div class="topbar-spacer"></div>
+    <div class="telemetry">
+      <span class="dot"></span><span class="dot-label">SYS ONLINE</span>
+      <span id="clock">00:00:00</span>
+    </div>
+    <button class="palette-btn" id="paletteBtn">⌕ Jump to… <kbd>/</kbd></button>
+    <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle light / dark">☾</button>
+  </header>
+
+  <nav class="rail" id="rail">
+    <span class="rail-group-label">Instrument Modes</span>
+    <button class="rail-btn active" data-mode="home"><span class="rail-idx">01</span>Overview<span class="rail-led"></span></button>
+    <button class="rail-btn" data-mode="profile"><span class="rail-idx">02</span>Profile<span class="rail-led"></span></button>
+    <button class="rail-btn" data-mode="publications"><span class="rail-idx">03</span>Publications<span class="rail-led"></span></button>
+    <button class="rail-btn" data-mode="journey"><span class="rail-idx">04</span>Timeline<span class="rail-led"></span></button>
+    <button class="rail-btn" data-mode="records"><span class="rail-idx">05</span>Records<span class="rail-led"></span></button>
+    <button class="rail-btn" data-mode="contact"><span class="rail-idx">06</span>Contact<span class="rail-led"></span></button>
+    <div class="rail-foot">
+      <p>Data Channels</p>
+      <div class="rail-foot-links">
+        <a href="https://github.com/Vishu1197" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+        <a href="https://www.linkedin.com/in/vishal-chanda-2b1053a6/" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a>
+        <a href="https://scholar.google.com/citations?user=gdA8TAIAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" aria-label="Google Scholar">GS</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main">
+    <div class="viewport" id="viewport">
+      <div class="viewport-grid"></div>
+      <span class="bracket tl"></span><span class="bracket tr"></span><span class="bracket bl"></span><span class="bracket br"></span>
+      <div class="scan-line"></div>
+
+      <div class="viewport-content" id="viewportContent">
+
+        <!-- 01 OVERVIEW -->
+        <section class="panel active" id="panel-home">
+          <div class="home-canvas-wrap"><canvas id="networkCanvas"></canvas></div>
+          <div class="node-tip" id="nodeTip"><b></b><span></span></div>
+          <div class="home-content">
+            <p class="eyebrow">Field of Study</p>
+            <h1>Vishal<br>Chanda</h1>
+            <p class="hero-role"><span id="typedRole"></span><span class="hero-cursor">▌</span></p>
+            <p>Bridging computational modeling and experimental biology to decode viral pathogenesis and build precision antiviral therapeutics.</p>
+            <div class="home-cta">
+              <button class="btn btn-solid" data-goto="publications">View Publications</button>
+              <button class="btn btn-outline" data-goto="records">View CV &amp; Records</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 02 PROFILE -->
+        <section class="panel" id="panel-profile">
+          <p class="eyebrow">Specimen Profile</p>
+          <h2>About the Researcher</h2>
+          <div class="profile-grid">
+            <div class="slide-frame">
+              <div class="slide-ring"></div>
+              <div class="slide-ring r2"></div>
+              <div class="slide-photo"><img src="assets/images/about/face.jpg" alt="Vishal Chanda"></div>
+              <div class="orbit-tag" id="orbitTagWrap"></div>
+            </div>
+            <div class="profile-body">
+              <p>Vishal Chanda is a PhD Researcher specializing in <strong>Bioinformatics</strong>, <strong>Nanotechnology</strong>, and <strong>Virology</strong>.</p>
+              <p>His work integrates RNA-seq analytics, molecular simulations, and experimental virology to understand dengue virus pathogenesis and thrombocytopenia. He designs lipid-based nanocarriers, performs computational drug discovery, and validates results using in-vitro virology techniques — bridging AI-driven modeling with experimental biology to build next-generation antiviral therapeutics.</p>
+              <p class="eyebrow" style="margin-top:22px;">Focus Lenses — click to inspect</p>
+              <div class="lens-row" id="lensRow"></div>
+              <div class="lens-desc" id="lensDesc">Select a lens above to bring a research focus into view.</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 03 PUBLICATIONS -->
+        <section class="panel" id="panel-publications">
+          <p class="eyebrow">Publication Record</p>
+          <h2>Electrophoresis of Output</h2>
+          <p>Each publication runs as a band in its category lane, positioned by year. Click a band to inspect the specimen.</p>
+          <div class="filter-bar" id="filterBar">
+            <button class="chip active" data-filter="all">All Lanes</button>
+            <button class="chip" data-filter="research">Research</button>
+            <button class="chip" data-filter="review">Review</button>
+            <button class="chip" data-filter="book">Book Chapters</button>
+          </div>
+          <div class="gel-wrap">
+            <div class="gel-lanes" id="gelLanes"></div>
+          </div>
+        </section>
+
+        <!-- 04 JOURNEY -->
+        <section class="panel" id="panel-journey">
+          <p class="eyebrow">Research Timeline</p>
+          <h2>Signal Trace</h2>
+          <p>Drag the playhead or click a node to read the event logged at that point in the trace.</p>
+          <div class="scope-wrap">
+            <div class="scope-screen">
+              <svg class="scope-svg" id="scopeSvg" viewBox="0 0 900 150" preserveAspectRatio="none"></svg>
+              <div class="scope-readout" id="scopeReadout"></div>
+              <div class="scope-controls">
+                <button class="chip" id="scopePrev">‹ Prev</button>
+                <button class="chip" id="scopeNext">Next ›</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 05 RECORDS -->
+        <section class="panel" id="panel-records">
+          <p class="eyebrow">Records &amp; Recognition</p>
+          <h2>Specimen Tray</h2>
+          <div class="tabs" id="expTabs">
+            <button class="chip active" data-tab="resume">Curriculum Vitae</button>
+            <button class="chip" data-tab="academia">Academic</button>
+            <button class="chip" data-tab="cocurricular">Co-Curricular</button>
+            <button class="chip" data-tab="extracurricular">Extra-Curricular</button>
+          </div>
+          <div class="tab-panel active" id="tab-resume">
+            <p>Click a page to view it at full size.</p>
+            <div class="cv-frame" id="cvFrame"></div>
+          </div>
+          <div class="tab-panel" id="tab-academia"><div class="tray-grid" id="grid-academia"></div></div>
+          <div class="tab-panel" id="tab-cocurricular"><div class="tray-grid" id="grid-cocurricular"></div></div>
+          <div class="tab-panel" id="tab-extracurricular"><div class="tray-grid" id="grid-extracurricular"></div></div>
+        </section>
+
+        <!-- 06 CONTACT -->
+        <section class="panel" id="panel-contact">
+          <p class="eyebrow">Open Channels</p>
+          <h2>Contact &amp; Profiles</h2>
+          <p>Reach the lab through any of the channels below.</p>
+          <div class="channel-list">
+            <a class="channel" href="https://github.com/Vishu1197" target="_blank" rel="noopener">
+              <div><div class="channel-name">GitHub</div><div class="channel-sub">Code &amp; portfolio source — Vishu1197</div></div>
+              <span class="channel-freq">↗ open</span>
+            </a>
+            <a class="channel" href="https://www.linkedin.com/in/vishal-chanda-2b1053a6/" target="_blank" rel="noopener">
+              <div><div class="channel-name">LinkedIn</div><div class="channel-sub">Professional network &amp; updates</div></div>
+              <span class="channel-freq">↗ open</span>
+            </a>
+            <a class="channel" href="https://www.scopus.com/authid/detail.uri?authorId=58697308400" target="_blank" rel="noopener">
+              <div><div class="channel-name">Scopus</div><div class="channel-sub">Author profile &amp; citation record</div></div>
+              <span class="channel-freq">↗ open</span>
+            </a>
+            <a class="channel" href="https://scholar.google.com/citations?user=gdA8TAIAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">
+              <div><div class="channel-name">Google Scholar</div><div class="channel-sub">Citations &amp; publication metrics</div></div>
+              <span class="channel-freq">↗ open</span>
+            </a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <aside class="meta-panel" id="metaPanel"></aside>
+  </main>
+
+  <footer class="statusbar">
+    <span>MODE:&nbsp;<span class="status-mode" id="statusMode">OVERVIEW</span></span>
+    <div class="statusbar-links">
+      <span id="statusCoord">x:00.0 y:00.0</span>
+      <span>© <span id="year"></span> Vishal Chanda</span>
+    </div>
+  </footer>
+</div>
+
+<!-- COMMAND PALETTE -->
+<div class="palette-overlay" id="paletteOverlay">
+  <div class="palette">
+    <input type="text" class="palette-input" id="paletteInput" placeholder="Jump to a mode or publication…" autocomplete="off">
+    <div class="palette-list" id="paletteList"></div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-head"><h3 id="modalTitle">Detail</h3><button class="modal-close" id="modalClose">✕</button></div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
