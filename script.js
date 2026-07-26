@@ -366,9 +366,9 @@
      ============================================================ */
   function initProfile(){
     const wrap = document.getElementById("orbitTagWrap");
-    DOMAINS.forEach((d,i) => {
+   DOMAINS.forEach((d,i) => {
       const angle = (i/DOMAINS.length) * Math.PI*2 - Math.PI/2;
-      const R = 135;
+      const R = i % 2 === 0 ? 150 : 185;   // was a flat 135 for every tag
       const x = 115 + Math.cos(angle)*R;
       const y = 115 + Math.sin(angle)*R;
       const tagEl = document.createElement("span");
