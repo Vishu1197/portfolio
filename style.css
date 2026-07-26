@@ -332,7 +332,7 @@ a{ color:inherit; }
 }
 .btn-solid{ background:var(--teal); color:var(--ink); }
 .btn-solid:hover{ background:var(--paper); }
-.btn-outline{ border-color:var(--line-strong); color:var(--paper); }
+.btn-outline{ background:transparent; border-color:var(--line-strong); color:var(--paper); }
 .btn-outline:hover{ border-color:var(--teal); color:var(--teal); }
 
 .chip{
