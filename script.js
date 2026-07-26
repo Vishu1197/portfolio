@@ -365,6 +365,21 @@
      PROFILE — orbit tags + focus lenses
      ============================================================ */
   function initProfile(){
+    const wrap = document.getElementById("orbitTagWrap");
+    DOMAINS.forEach((d,i) => {
+      const angle = (i/DOMAINS.length) * Math.PI*2 - Math.PI/2;
+      const R = 135;
+      const x = 115 + Math.cos(angle)*R;
+      const y = 115 + Math.sin(angle)*R;
+      const tagEl = document.createElement("span");
+      tagEl.className = "orbit-tag";
+      tagEl.textContent = d.label;
+      tagEl.style.left = x + "px";
+      tagEl.style.top = y + "px";
+      tagEl.style.transform = "translate(-50%,-50%)";
+      wrap.appendChild(tagEl);
+    });
+
     const lensRow = document.getElementById("lensRow");
     const lensDesc = document.getElementById("lensDesc");
     DOMAINS.forEach(d => {
