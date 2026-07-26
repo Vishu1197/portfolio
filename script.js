@@ -253,8 +253,10 @@
     }
 
     function layoutNodes(){
-      const cx = w * 0.72, cy = h * 0.5;
-      const radius = Math.min(w,h) * 0.34;
+      const isMobile = w <= 760;
+      const cx = isMobile ? w * 0.5 : w * 0.72;
+      const cy = isMobile ? h * 0.32 : h * 0.5;
+      const radius = Math.min(w,h) * (isMobile ? 0.24 : 0.34);
       nodes = DOMAINS.map((d, i) => {
         const angle = (i / DOMAINS.length) * Math.PI * 2 - Math.PI/2;
         return {
@@ -273,7 +275,7 @@
     function draw(){
       t += 0.0045;
       ctx.clearRect(0,0,w,h);
-      const cx = w*0.72, cy = h*0.5;
+      const cx = nodes.center.x, cy = nodes.center.y;
 
       // recompute positions with slow orbit
       nodes.forEach((n,i) => {
@@ -366,19 +368,37 @@
      ============================================================ */
   function initProfile(){
     const wrap = document.getElementById("orbitTagWrap");
-    DOMAINS.forEach((d,i) => {
-      const angle = (i/DOMAINS.length) * Math.PI*2 - Math.PI/2;
-      const R = 135;
-      const x = 115 + Math.cos(angle)*R;
-      const y = 115 + Math.sin(angle)*R;
-      const tagEl = document.createElement("span");
-      tagEl.className = "orbit-tag";
-      tagEl.textContent = d.label;
-      tagEl.style.left = x + "px";
-      tagEl.style.top = y + "px";
-      tagEl.style.transform = "translate(-50%,-50%)";
-      wrap.appendChild(tagEl);
-    });
+    const isMobile = window.innerWidth <= 760;
+    // Shortened labels for the orbit ring only (full labels stay in the lens row below).
+    const ORBIT_LABELS = {
+      virology:"Virology", bioinfo:"Bioinformatics", nano:"Nanomedicine",
+      md:"Mol. Dynamics", ml:"Machine Learning"
+    };
+    if(isMobile){
+      // On small screens, skip the radial layout entirely and let CSS
+      // arrange the tags as a simple wrapped row under the photo.
+      DOMAINS.forEach(d => {
+        const tagEl = document.createElement("span");
+        tagEl.className = "orbit-tag";
+        tagEl.textContent = ORBIT_LABELS[d.key];
+        wrap.appendChild(tagEl);
+      });
+    } else {
+      const center = 210;   // half of the 420px .slide-frame
+      const R = 150;        // stays inside the frame, no spillover
+      DOMAINS.forEach((d,i) => {
+        const angle = (i/DOMAINS.length) * Math.PI*2 - Math.PI/2;
+        const x = center + Math.cos(angle)*R;
+        const y = center + Math.sin(angle)*R;
+        const tagEl = document.createElement("span");
+        tagEl.className = "orbit-tag";
+        tagEl.textContent = ORBIT_LABELS[d.key];
+        tagEl.style.left = x + "px";
+        tagEl.style.top = y + "px";
+        tagEl.style.transform = "translate(-50%,-50%)";
+        wrap.appendChild(tagEl);
+      });
+    }
 
     const lensRow = document.getElementById("lensRow");
     const lensDesc = document.getElementById("lensDesc");
